@@ -2,8 +2,8 @@
 # --------------------------------------------------------
 # -- Linear Math librairy
 # --------------------------------------------------------
-import lutinModule as module
-import lutinTools as tools
+import lutin.module as module
+import lutin.tools as tools
 
 def get_desc():
 	return "Bullet lib linar Mathematic interface"
@@ -24,7 +24,7 @@ def create(target):
 		'bullet/src/LinearMath/btVector3.cpp',
 		'bullet/src/LinearMath/btConvexHullComputer.cpp'])
 	
-	myModule.compile_flags_CC([
+	myModule.compile_flags('c', [
 		'-Wno-write-strings',
 		'-DHAVE_CONFIG_H',
 		'-O2'])

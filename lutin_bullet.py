@@ -2,8 +2,8 @@
 # --------------------------------------------------------
 # -- Bullet librairy
 # --------------------------------------------------------
-import lutinModule as module
-import lutinTools as tools
+import lutin.module as module
+import lutin.tools as tools
 
 def get_desc():
 	return "Bullet lib : C++ physic engine"
@@ -16,7 +16,7 @@ def create(target):
 	#remove compilation warning (specific for external libs):
 	myModule.remove_compile_warning()
 	
-	myModule.compile_flags_CC([
+	myModule.compile_flags('c++', [
 		'-Wno-write-strings',
 		'-DHAVE_CONFIG_H',
 		'-O2'])
