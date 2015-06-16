@@ -15,21 +15,21 @@ def create(target):
 	myModule.remove_compile_warning()
 	
 	myModule.add_src_file([
-		'bullet/src/LinearMath/btQuickprof.cpp',
-		'bullet/src/LinearMath/btGeometryUtil.cpp',
-		'bullet/src/LinearMath/btAlignedAllocator.cpp',
-		'bullet/src/LinearMath/btSerializer.cpp',
-		'bullet/src/LinearMath/btConvexHull.cpp',
-		'bullet/src/LinearMath/btPolarDecomposition.cpp',
-		'bullet/src/LinearMath/btVector3.cpp',
-		'bullet/src/LinearMath/btConvexHullComputer.cpp'])
+		'bullet-physics/src/LinearMath/btQuickprof.cpp',
+		'bullet-physics/src/LinearMath/btGeometryUtil.cpp',
+		'bullet-physics/src/LinearMath/btAlignedAllocator.cpp',
+		'bullet-physics/src/LinearMath/btSerializer.cpp',
+		'bullet-physics/src/LinearMath/btConvexHull.cpp',
+		'bullet-physics/src/LinearMath/btPolarDecomposition.cpp',
+		'bullet-physics/src/LinearMath/btVector3.cpp',
+		'bullet-physics/src/LinearMath/btConvexHullComputer.cpp'])
 	
 	myModule.compile_flags('c', [
 		'-Wno-write-strings',
 		'-DHAVE_CONFIG_H',
 		'-O2'])
 	
-	myModule.add_export_path(tools.get_current_path(__file__)+"/bullet/src/")
+	myModule.add_export_path(tools.get_current_path(__file__)+"/bullet-physics/src/")
 	
 	# add the currrent module at the 
 	return myModule
