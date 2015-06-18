@@ -21,9 +21,9 @@ def create(target):
 		'-DHAVE_CONFIG_H',
 		'-O2'])
 	
-	myModule.add_export_path(tools.get_current_path(__file__)+"/bullet/src/")
+	myModule.add_export_path(tools.get_current_path(__file__)+"/bullet-physics/src/")
 	myModule.add_export_path(tools.get_current_path(__file__))
-	myModule.add_path(tools.get_current_path(__file__)+"/bullet/Extras/ConvexDecomposition")
+	myModule.add_path(tools.get_current_path(__file__)+"/bullet-physics/Extras/ConvexDecomposition")
 	
 	# lib BulletCollision
 	myModule.add_src_file([
@@ -145,7 +145,7 @@ def create(target):
 		'bullet-physics/src/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.cpp',
 		'bullet-physics/src/BulletDynamics/Vehicle/btWheelInfo.cpp',
 		'bullet-physics/src/BulletDynamics/Vehicle/btRaycastVehicle.cpp',
-		'bullet/src/BulletDynamics/Character/btKinematicCharacterController.cpp'])
+		'bullet-physics/src/BulletDynamics/Character/btKinematicCharacterController.cpp'])
 	
 	
 	# lib BulletSoftBody
