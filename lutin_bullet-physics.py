@@ -10,23 +10,23 @@ def get_desc():
 
 
 def create(target):
-	myModule = module.Module(__file__, 'bullet-physics', 'LIBRARY')
+	my_module = module.Module(__file__, 'bullet-physics', 'LIBRARY')
 	
-	myModule.add_module_depend(['linearmath'])
+	my_module.add_module_depend(['linearmath'])
 	#remove compilation warning (specific for external libs):
-	myModule.remove_compile_warning()
+	my_module.remove_compile_warning()
 	
-	myModule.compile_flags('c++', [
+	my_module.compile_flags('c++', [
 		'-Wno-write-strings',
 		'-DHAVE_CONFIG_H',
 		'-O2'])
 	
-	myModule.add_export_path(tools.get_current_path(__file__)+"/bullet-physics/src/")
-	myModule.add_export_path(tools.get_current_path(__file__))
-	myModule.add_path(tools.get_current_path(__file__)+"/bullet-physics/Extras/ConvexDecomposition")
+	my_module.add_export_path(tools.get_current_path(__file__)+"/bullet-physics/src/")
+	my_module.add_export_path(tools.get_current_path(__file__))
+	my_module.add_path(tools.get_current_path(__file__)+"/bullet-physics/Extras/ConvexDecomposition")
 	
 	# lib BulletCollision
-	myModule.add_src_file([
+	my_module.add_src_file([
 		'bullet-physics/src/BulletCollision/NarrowPhaseCollision/btRaycastCallback.cpp',
 		'bullet-physics/src/BulletCollision/NarrowPhaseCollision/btMinkowskiPenetrationDepthSolver.cpp',
 		'bullet-physics/src/BulletCollision/NarrowPhaseCollision/btSubSimplexConvexCast.cpp',
@@ -125,7 +125,7 @@ def create(target):
 	
 	
 	# lib BulletDynamics
-	myModule.add_src_file([
+	my_module.add_src_file([
 		'bullet-physics/src/BulletDynamics/Dynamics/btRigidBody.cpp',
 		'bullet-physics/src/BulletDynamics/Dynamics/btSimpleDynamicsWorld.cpp',
 		'bullet-physics/src/BulletDynamics/Dynamics/Bullet-C-API.cpp',
@@ -149,7 +149,7 @@ def create(target):
 	
 	
 	# lib BulletSoftBody
-	myModule.add_src_file([
+	my_module.add_src_file([
 		'bullet-physics/src/BulletSoftBody/btDefaultSoftBodySolver.cpp',
 		'bullet-physics/src/BulletSoftBody/btSoftBodyRigidBodyCollisionConfiguration.cpp',
 		'bullet-physics/src/BulletSoftBody/btSoftBody.cpp',
@@ -160,12 +160,12 @@ def create(target):
 		'bullet-physics/src/BulletSoftBody/btSoftSoftCollisionAlgorithm.cpp'])
 	
 	# lib gimpactutils
-	myModule.add_src_file([
+	my_module.add_src_file([
 		'bullet-physics/Extras/GIMPACTUtils/btGImpactConvexDecompositionShape.cpp'])
 	
 	"""
 	# lib convexdecomposition
-	myModule.add_src_file([
+	my_module.add_src_file([
 		'bullet-physics/Extras/ConvexDecomposition/concavity.cpp',
 		'bullet-physics/Extras/ConvexDecomposition/ConvexDecomposition.cpp',
 		'bullet-physics/Extras/ConvexDecomposition/vlookup.cpp',
@@ -184,12 +184,12 @@ def create(target):
 	
 	"""
 	# lib HACD
-	myModule.add_src_file([
+	my_module.add_src_file([
 		'bullet-physics/Extras/HACD/hacdGraph.cpp',
 		'bullet-physics/Extras/HACD/hacdHACD.cpp',
 		'bullet-physics/Extras/HACD/hacdICHull.cpp',
 		'bullet-physics/Extras/HACD/hacdManifoldMesh.cpp'])
 	"""
-	return myModule
+	return my_module
 
 

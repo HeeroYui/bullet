@@ -10,11 +10,11 @@ def get_desc():
 
 
 def create(target):
-	myModule = module.Module(__file__, 'linearmath', 'LIBRARY')
+	my_module = module.Module(__file__, 'linearmath', 'LIBRARY')
 	#remove compilation warning (specific for external libs):
-	myModule.remove_compile_warning()
+	my_module.remove_compile_warning()
 	
-	myModule.add_src_file([
+	my_module.add_src_file([
 		'bullet-physics/src/LinearMath/btQuickprof.cpp',
 		'bullet-physics/src/LinearMath/btGeometryUtil.cpp',
 		'bullet-physics/src/LinearMath/btAlignedAllocator.cpp',
@@ -24,15 +24,15 @@ def create(target):
 		'bullet-physics/src/LinearMath/btVector3.cpp',
 		'bullet-physics/src/LinearMath/btConvexHullComputer.cpp'])
 	
-	myModule.compile_flags('c', [
+	my_module.compile_flags('c', [
 		'-Wno-write-strings',
 		'-DHAVE_CONFIG_H',
 		'-O2'])
 	
-	myModule.add_export_path(tools.get_current_path(__file__)+"/bullet-physics/src/")
+	my_module.add_export_path(tools.get_current_path(__file__)+"/bullet-physics/src/")
 	
 	# add the currrent module at the 
-	return myModule
+	return my_module
 
 
 
