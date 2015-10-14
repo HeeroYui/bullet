@@ -5,26 +5,40 @@
 import lutin.module as module
 import lutin.tools as tools
 
+
+def get_type():
+	return "LIBRARY"
+
 def get_desc():
 	return "C++ physic engine"
 
+def get_licence():
+	return "zlib"
 
-def create(target):
-	my_module = module.Module(__file__, 'bullet-physics', 'LIBRARY')
-	
+def get_compagny_type():
+	return "org"
+
+def get_compagny_name():
+	return "bullet-physics"
+
+def get_maintainer():
+	return ["Erwin Coumans <erwin.coumans@gmail.com>"]
+
+def get_version():
+	return [2,82,"r2704"]
+
+def create(target, module_name):
+	my_module = module.Module(__file__, module_name, get_type())
 	my_module.add_module_depend(['linearmath'])
 	#remove compilation warning (specific for external libs):
 	my_module.remove_compile_warning()
-	
 	my_module.compile_flags('c++', [
 		'-Wno-write-strings',
 		'-DHAVE_CONFIG_H',
 		'-O2'])
-	
 	my_module.add_export_path(tools.get_current_path(__file__)+"/bullet-physics/src/")
 	my_module.add_export_path(tools.get_current_path(__file__))
 	my_module.add_path(tools.get_current_path(__file__)+"/bullet-physics/Extras/ConvexDecomposition")
-	
 	# lib BulletCollision
 	my_module.add_src_file([
 		'bullet-physics/src/BulletCollision/NarrowPhaseCollision/btRaycastCallback.cpp',
@@ -120,10 +134,6 @@ def create(target):
 		'bullet-physics/src/BulletCollision/Gimpact/gim_memory.cpp',
 		'bullet-physics/src/BulletCollision/Gimpact/gim_tri_collision.cpp'])
 	
-	
-	
-	
-	
 	# lib BulletDynamics
 	my_module.add_src_file([
 		'bullet-physics/src/BulletDynamics/Dynamics/btRigidBody.cpp',
@@ -146,7 +156,6 @@ def create(target):
 		'bullet-physics/src/BulletDynamics/Vehicle/btWheelInfo.cpp',
 		'bullet-physics/src/BulletDynamics/Vehicle/btRaycastVehicle.cpp',
 		'bullet-physics/src/BulletDynamics/Character/btKinematicCharacterController.cpp'])
-	
 	
 	# lib BulletSoftBody
 	my_module.add_src_file([
@@ -191,5 +200,4 @@ def create(target):
 		'bullet-physics/Extras/HACD/hacdManifoldMesh.cpp'])
 	"""
 	return my_module
-
 
