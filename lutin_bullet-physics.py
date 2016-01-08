@@ -36,9 +36,9 @@ def create(target, module_name):
 		'-Wno-write-strings',
 		'-DHAVE_CONFIG_H',
 		'-O2'])
-	my_module.add_export_path(tools.get_current_path(__file__)+"/bullet-physics/src/")
+	my_module.add_export_path(os.path.join(tools.get_current_path(__file__), "bullet-physics/src/"))
 	my_module.add_export_path(tools.get_current_path(__file__))
-	my_module.add_path(tools.get_current_path(__file__)+"/bullet-physics/Extras/ConvexDecomposition")
+	my_module.add_path(os.path.join(tools.get_current_path(__file__), "bullet-physics/Extras/ConvexDecomposition"))
 	# lib BulletCollision
 	my_module.add_src_file([
 		'bullet-physics/src/BulletCollision/NarrowPhaseCollision/btRaycastCallback.cpp',

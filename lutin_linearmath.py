@@ -42,7 +42,7 @@ def create(target, module_name):
 		'bullet-physics/src/LinearMath/btVector3.cpp',
 		'bullet-physics/src/LinearMath/btConvexHullComputer.cpp'
 		])
-	my_module.compile_flags('c', [
+	my_module.compile_flags('c++', [
 		'-Wno-write-strings',
 		'-DHAVE_CONFIG_H',
 		'-O2'])
@@ -77,6 +77,8 @@ def create(target, module_name):
 		'bullet-physics/src/LinearMath/btTransform.h'
 		],
 		destination_path="LinearMath")
+	# depend on the cxx library (need <new> and somes things ...)
+	my_module.add_module_depend(['cxx'])
 	return my_module
 
 
