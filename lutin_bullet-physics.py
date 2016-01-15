@@ -4,6 +4,7 @@
 # --------------------------------------------------------
 import lutin.module as module
 import lutin.tools as tools
+import os
 
 
 def get_type():
