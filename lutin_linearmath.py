@@ -78,7 +78,10 @@ def create(target, module_name):
 		],
 		destination_path="LinearMath")
 	# depend on the cxx library (need <new> and somes things ...)
-	my_module.add_module_depend(['cxx'])
+	my_module.add_module_depend([
+	    'cxx',
+	    'm'
+	    ])
 	return my_module
 
 
