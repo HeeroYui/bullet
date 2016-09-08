@@ -30,15 +30,15 @@ def get_version():
 
 def create(target, module_name):
 	my_module = module.Module(__file__, module_name, get_type())
-	my_module.add_module_depend(['linearmath'])
+	my_module.add_depend(['linearmath'])
 	#remove compilation warning (specific for external libs):
 	my_module.remove_compile_warning()
-	my_module.compile_flags('c++', [
+	my_module.add_flag('c++', [
 	    '-Wno-write-strings',
 	    '-DHAVE_CONFIG_H',
 	    '-O2'])
-	my_module.add_export_path(os.path.join(tools.get_current_path(__file__), "bullet-physics/src/"))
-	my_module.add_export_path(tools.get_current_path(__file__))
+	my_module.add_path(os.path.join(tools.get_current_path(__file__), "bullet-physics/src/"), export=True)
+	my_module.add_path(tools.get_current_path(__file__), export=True)
 	my_module.add_path(os.path.join(tools.get_current_path(__file__), "bullet-physics/Extras/ConvexDecomposition"))
 	# lib BulletCollision
 	my_module.add_src_file([
