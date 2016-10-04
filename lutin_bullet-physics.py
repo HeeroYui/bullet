@@ -2,7 +2,7 @@
 # --------------------------------------------------------
 # -- Bullet librairy
 # --------------------------------------------------------
-import lutin.module as module
+import lutin.debug as debug
 import lutin.tools as tools
 import os
 
@@ -28,8 +28,7 @@ def get_maintainer():
 def get_version():
 	return [2,82,"r2704"]
 
-def create(target, module_name):
-	my_module = module.Module(__file__, module_name, get_type())
+def configure(target, my_module):
 	my_module.add_depend(['linearmath'])
 	#remove compilation warning (specific for external libs):
 	my_module.remove_compile_warning()
@@ -37,9 +36,9 @@ def create(target, module_name):
 	    '-Wno-write-strings',
 	    '-DHAVE_CONFIG_H',
 	    '-O2'])
-	my_module.add_path(os.path.join(tools.get_current_path(__file__), "bullet-physics/src/"), export=True)
-	my_module.add_path(tools.get_current_path(__file__), export=True)
-	my_module.add_path(os.path.join(tools.get_current_path(__file__), "bullet-physics/Extras/ConvexDecomposition"))
+	my_module.add_path("bullet-physics/src", export=True)
+	my_module.add_path(".", export=True)
+	my_module.add_path("bullet-physics/Extras/ConvexDecomposition")
 	# lib BulletCollision
 	my_module.add_src_file([
 	    'bullet-physics/src/BulletCollision/NarrowPhaseCollision/btRaycastCallback.cpp',
@@ -201,5 +200,5 @@ def create(target, module_name):
 	    'bullet-physics/Extras/HACD/hacdICHull.cpp',
 	    'bullet-physics/Extras/HACD/hacdManifoldMesh.cpp'])
 	"""
-	return my_module
+	return True
 
